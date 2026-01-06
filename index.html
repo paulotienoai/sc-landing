@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free SMP Consultation | Scalp Carolinas</title>
+    <meta name="description" content="Answer a few quick questions to see if Scalp Micropigmentation is right for you. Get your personalized consultation with Scalp Carolinas.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Lato:wght@300;400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Hero Section -->
+    <header class="hero-section">
+        <div class="container">
+            <div class="logo">
+                <h1 class="logo-text">SCALP CAROLINAS</h1>
+            </div>
+            <div class="hero-content">
+                <h1 class="hero-headline">Find Out If SMP Is Right For You</h1>
+                <p class="hero-subheadline">Answer a few quick questions to get your personalized consultation</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Survey Container -->
+    <div class="survey-container">
+        <div class="container">
+
+            <!-- Progress Bar -->
+            <div class="progress-wrapper">
+                <div class="progress-bar-container">
+                    <div class="progress-bar-fill" id="progressBar"></div>
+                </div>
+                <p class="progress-text"><span id="progressPercent">0</span>% Complete</p>
+            </div>
+
+            <!-- Survey Form -->
+            <form id="qualificationForm" class="survey-form">
+
+                <!-- Question 1: Hair Loss Type -->
+                <div class="question-card active" data-step="1">
+                    <div class="question-number">Question 1 of 7</div>
+                    <h2 class="question-title">What type of hair loss are you experiencing?</h2>
+                    <p class="question-description">Select all that apply so we can better understand your situation</p>
+
+                    <div class="options-container">
+                        <label class="option-button checkbox-type">
+                            <input type="checkbox" name="hairLossType" value="receding-hairline">
+                            <span class="option-label">Receding Hairline</span>
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="option-button checkbox-type">
+                            <input type="checkbox" name="hairLossType" value="thinning-crown">
+                            <span class="option-label">Thinning Crown / Bald Spot</span>
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="option-button checkbox-type">
+                            <input type="checkbox" name="hairLossType" value="pattern-baldness">
+                            <span class="option-label">Complete/Pattern Baldness</span>
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="option-button checkbox-type">
+                            <input type="checkbox" name="hairLossType" value="alopecia">
+                            <span class="option-label">Alopecia (Patchy Hair Loss)</span>
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="option-button checkbox-type">
+                            <input type="checkbox" name="hairLossType" value="scar-coverage">
+                            <span class="option-label">Scar Coverage</span>
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="option-button checkbox-type">
+                            <input type="checkbox" name="hairLossType" value="overall-thinning">
+                            <span class="option-label">Overall Thinning</span>
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+
+                    <p class="error-message" id="error-1"></p>
+                    <div class="navigation-buttons">
+                        <button type="button" class="btn-next" onclick="validateAndNext(1)">
+                            Next <span class="arrow">→</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Question 2: Understanding SMP -->
+                <div class="question-card" data-step="2">
+                    <div class="question-number">Question 2 of 7</div>
+                    <h2 class="question-title">Do you understand that SMP is a cosmetic pigmentation procedure?</h2>
+
+                    <div class="info-callout">
+                        <div class="info-icon">⚠️</div>
+                        <div class="info-content">
+                            <h3>Important: SMP is NOT a Hair Transplant</h3>
+                            <p>Scalp Micropigmentation uses specialized pigmentation techniques to replicate the appearance of natural hair follicles on your scalp. It's a non-surgical cosmetic tattoo that creates the illusion of a fuller head of hair.</p>
+                            <ul class="info-list">
+                                <li>✓ No surgery or incisions required</li>
+                                <li>✓ Immediate visual results</li>
+                                <li>✓ Natural-looking follicle replication</li>
+                                <li>✓ Minimal downtime</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="options-container">
+                        <label class="option-button radio-type">
+                            <input type="radio" name="understandSMP" value="yes-understood">
+                            <span class="option-label">Yes, I understand SMP is a pigmentation procedure, not a hair transplant</span>
+                            <span class="radio-dot"></span>
+                        </label>
+                        <label class="option-button radio-type">
+                            <input type="radio" name="understandSMP" value="need-more-info">
+                            <span class="option-label">I'd like to learn more about the difference</span>
+                            <span class="radio-dot"></span>
+                        </label>
+                    </div>
+
+                    <p class="error-message" id="error-2"></p>
+                    <div class="navigation-buttons">
+                        <button type="button" class="btn-back" onclick="prevStep()">
+                            <span class="arrow">←</span> Back
+                        </button>
+                        <button type="button" class="btn-next" onclick="validateAndNext(2)">
+                            Next <span class="arrow">→</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Question 3: Hair Loss Severity -->
+                <div class="question-card" data-step="3">
+                    <div class="question-number">Question 3 of 7</div>
+                    <h2 class="question-title">On a scale of 1-10, how would you rate your hair loss?</h2>
+                    <p class="question-description">1 = Minor thinning | 10 = Complete baldness</p>
+
+                    <div class="scale-container">
+                        <div class="scale-numbers">
+                            <label class="scale-option" data-value="1">
+                                <input type="radio" name="severity" value="1">
+                                <span class="scale-number">1</span>
+                            </label>
+                            <label class="scale-option" data-value="2">
+                                <input type="radio" name="severity" value="2">
+                                <span class="scale-number">2</span>
+                            </label>
+                            <label class="scale-option" data-value="3">
+                                <input type="radio" name="severity" value="3">
+                                <span class="scale-number">3</span>
+                            </label>
+                            <label class="scale-option" data-value="4">
+                                <input type="radio" name="severity" value="4">
+                                <span class="scale-number">4</span>
+                            </label>
+                            <label class="scale-option" data-value="5">
+                                <input type="radio" name="severity" value="5">
+                                <span class="scale-number">5</span>
+                            </label>
+                            <label class="scale-option" data-value="6">
+                                <input type="radio" name="severity" value="6">
+                                <span class="scale-number">6</span>
+                            </label>
+                            <label class="scale-option" data-value="7">
+                                <input type="radio" name="severity" value="7">
+                                <span class="scale-number">7</span>
+                            </label>
+                            <label class="scale-option" data-value="8">
+                                <input type="radio" name="severity" value="8">
+                                <span class="scale-number">8</span>
+                            </label>
+                            <label class="scale-option" data-value="9">
+                                <input type="radio" name="severity" value="9">
+                                <span class="scale-number">9</span>
+                            </label>
+                            <label class="scale-option" data-value="10">
+                                <input type="radio" name="severity" value="10">
+                                <span class="scale-number">10</span>
+                            </label>
+                        </div>
+                        <div class="scale-labels">
+                            <span class="scale-label-start">Minor Thinning</span>
+                            <span class="scale-label-end">Complete Baldness</span>
+                        </div>
+                    </div>
+
+                    <p class="error-message" id="error-3"></p>
+                    <div class="navigation-buttons">
+                        <button type="button" class="btn-back" onclick="prevStep()">
+                            <span class="arrow">←</span> Back
+                        </button>
+                        <button type="button" class="btn-next" onclick="validateAndNext(3)">
+                            Next <span class="arrow">→</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Question 4: Scalp Conditions -->
+                <div class="question-card" data-step="4">
+                    <div class="question-number">Question 4 of 7</div>
+                    <h2 class="question-title">Do you have any active scalp or skin conditions?</h2>
+                    <p class="question-description">Examples: Psoriasis, eczema, dermatitis, active infections</p>
+
+                    <div class="options-container">
+                        <label class="option-button radio-type">
+                            <input type="radio" name="scalpConditions" value="no">
+                            <span class="option-label">No, my scalp is healthy</span>
+                            <span class="radio-dot"></span>
+                        </label>
+                        <label class="option-button radio-type">
+                            <input type="radio" name="scalpConditions" value="yes-mild">
+                            <span class="option-label">Yes, but it's mild/managed</span>
+                            <span class="radio-dot"></span>
+                        </label>
+                        <label class="option-button radio-type">
+                            <input type="radio" name="scalpConditions" value="yes-active">
+                            <span class="option-label">Yes, I have active conditions</span>
+                            <span class="radio-dot"></span>
+                        </label>
+                        <label class="option-button radio-type">
+                            <input type="radio" name="scalpConditions" value="not-sure">
+                            <span class="option-label">Not sure / Need to discuss</span>
+                            <span class="radio-dot"></span>
+                        </label>
+                    </div>
+
+                    <p class="error-message" id="error-4"></p>
+                    <div class="navigation-buttons">
+                        <button type="button" class="btn-back" onclick="prevStep()">
+                            <span class="arrow">←</span> Back
+                        </button>
+                        <button type="button" class="btn-next" onclick="validateAndNext(4)">
+                            Next <span class="arrow">→</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Question 5: Timeline & Budget -->
+                <div class="question-card" data-step="5">
+                    <div class="question-number">Question 5 of 7</div>
+                    <h2 class="question-title">When are you looking to get started?</h2>
+
+                    <div class="options-container">
+                        <label class="option-button radio-type">
+                            <input type="radio" name="timeline" value="asap">
+                            <span class="option-label">As soon as possible (1-2 weeks)</span>
+                            <span class="radio-dot"></span>
+                        </label>
+                        <label class="option-button radio-type">
+                            <input type="radio" name="timeline" value="1-month">
+                            <span class="option-label">Within the next month</span>
+                            <span class="radio-dot"></span>
+                        </label>
+                        <label class="option-button radio-type">
+                            <input type="radio" name="timeline" value="1-3-months">
+                            <span class="option-label">1-3 months</span>
+                            <span class="radio-dot"></span>
+                        </label>
+                        <label class="option-button radio-type">
+                            <input type="radio" name="timeline" value="researching">
+                            <span class="option-label">Just researching options</span>
+                            <span class="radio-dot"></span>
+                        </label>
+                    </div>
+
+                    <p class="error-message" id="error-5"></p>
+                    <div class="navigation-buttons">
+                        <button type="button" class="btn-back" onclick="prevStep()">
+                            <span class="arrow">←</span> Back
+                        </button>
+                        <button type="button" class="btn-next" onclick="validateAndNext(5)">
+                            Next <span class="arrow">→</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Question 6: Location (Zip Code) -->
+                <div class="question-card" data-step="6">
+                    <div class="question-number">Question 6 of 7</div>
+                    <h2 class="question-title">What's your zip code?</h2>
+                    <p class="question-description">We serve clients throughout North and South Carolina</p>
+
+                    <div class="input-wrapper">
+                        <input type="text" id="zipCode" name="zipCode" class="text-input" placeholder="Enter your zip code" maxlength="5" pattern="[0-9]{5}">
+                    </div>
+
+                    <p class="error-message" id="error-6"></p>
+                    <div class="navigation-buttons">
+                        <button type="button" class="btn-back" onclick="prevStep()">
+                            <span class="arrow">←</span> Back
+                        </button>
+                        <button type="button" class="btn-next" onclick="validateAndNext(6)">
+                            Next <span class="arrow">→</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Question 7: Contact Information -->
+                <div class="question-card" data-step="7">
+                    <div class="question-number">Question 7 of 7</div>
+                    <h2 class="question-title">Almost done! Where should we send your personalized consultation?</h2>
+                    <p class="question-description">Don't worry, we won't spam you. This is just so we can follow up with your customized SMP plan.</p>
+
+                    <div class="form-grid">
+                        <div class="input-wrapper">
+                            <label for="firstName" class="input-label">First Name *</label>
+                            <input type="text" id="firstName" name="firstName" class="text-input" placeholder="John" required>
+                        </div>
+
+                        <div class="input-wrapper">
+                            <label for="lastName" class="input-label">Last Name *</label>
+                            <input type="text" id="lastName" name="lastName" class="text-input" placeholder="Doe" required>
+                        </div>
+
+                        <div class="input-wrapper full-width">
+                            <label for="email" class="input-label">Email Address *</label>
+                            <input type="email" id="email" name="email" class="text-input" placeholder="john.doe@example.com" required>
+                        </div>
+
+                        <div class="input-wrapper full-width">
+                            <label for="phone" class="input-label">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" class="text-input" placeholder="(555) 123-4567" required>
+                        </div>
+                    </div>
+
+                    <div class="consent-wrapper">
+                        <label class="consent-checkbox">
+                            <input type="checkbox" name="smsConsent" id="smsConsent" required>
+                            <span class="consent-text">
+                                I consent to receive SMS notifications, alerts & occasional marketing communication from Scalp Carolinas. Message frequency varies. Message & data rates may apply. Text HELP to (704) 837-3773 for assistance. You can reply STOP to unsubscribe at any time.
+                            </span>
+                        </label>
+                        <div class="consent-links">
+                            <a href="https://scalpcarolinas.com/terms-of-service/" target="_blank" class="consent-link">Terms & Conditions</a> |
+                            <a href="https://scalpcarolinas.com/privacy-policy/" target="_blank" class="consent-link">Privacy Policy</a>
+                        </div>
+                    </div>
+
+                    <p class="error-message" id="error-7"></p>
+                    <div class="navigation-buttons">
+                        <button type="button" class="btn-back" onclick="prevStep()">
+                            <span class="arrow">←</span> Back
+                        </button>
+                        <button type="submit" class="btn-submit">
+                            Get My Free Consultation <span class="arrow">→</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Thank You Page / Booking Page -->
+                <div class="question-card booking-page" data-step="8">
+                    <div class="booking-container">
+                        <div class="booking-header">
+                            <h2 class="booking-title">Book Your Free Discovery Call</h2>
+                            <p class="booking-subtitle">Choose a convenient time for your personalized SMP consultation</p>
+                        </div>
+
+                        <div class="booking-iframe-wrapper">
+                            <iframe src="https://app.acuityscheduling.com/schedule/23d9b6b8/?appointmentTypeIds[]=9979247"
+                                    width="100%"
+                                    height="800"
+                                    frameBorder="0"
+                                    id="bookingIframe"
+                                    title="Schedule Appointment"></iframe>
+                        </div>
+
+                        <div class="booking-footer">
+                            <p class="booking-footer-text">Have questions? Call us at <a href="tel:7048373773">(704) 837-3773</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hidden UTM Fields -->
+                <input type="hidden" name="utm_source" id="utm_source">
+                <input type="hidden" name="utm_medium" id="utm_medium">
+                <input type="hidden" name="utm_campaign" id="utm_campaign">
+                <input type="hidden" name="fbclid" id="fbclid">
+
+            </form>
+        </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="faq-title">Frequently Asked Questions</h2>
+
+            <div class="faq-accordion">
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>What is Scalp Micropigmentation (SMP)?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Scalp Micropigmentation is a non-surgical cosmetic procedure that uses specialized pigmentation techniques to replicate the natural appearance of hair follicles on your scalp. It creates the illusion of a fuller head of hair or a defined hairline without surgery.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Is SMP the same as a hair transplant?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>No, SMP is NOT a hair transplant. Hair transplants involve surgically moving hair follicles from one area to another. SMP is a cosmetic tattoo that creates the appearance of hair follicles through pigmentation - no surgery required.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>How long does SMP last?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>SMP typically lasts 4-6 years before requiring a touch-up. The longevity depends on factors like skin type, sun exposure, and aftercare. Touch-ups are simple and help maintain the fresh appearance.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Does SMP hurt?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Most clients report minimal discomfort during the procedure. We use topical numbing agents to ensure your comfort. The sensation is often described as less painful than a regular tattoo.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>How much does SMP cost?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>SMP typically ranges from $1,500 to $4,500 depending on the extent of treatment needed. During your consultation, we'll provide a detailed quote based on your specific situation and goals.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Who is a good candidate for SMP?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>SMP works for most people experiencing hair loss, including those with receding hairlines, thinning hair, pattern baldness, alopecia, or scalp scars. It's suitable for all skin types and hair colors. We'll assess your specific situation during the consultation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">&copy; 2026 Scalp Carolinas. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="https://scalpcarolinas.com" class="footer-link">Website</a>
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <a href="#" class="footer-link">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
