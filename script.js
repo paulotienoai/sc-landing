@@ -366,19 +366,15 @@ async function handleFormSubmit(e) {
     try {
         await submitFormData(formData);
 
-        // Success - move to booking page
-        currentStep = 8;
-        document.querySelector('.question-card.active').classList.remove('active');
-        document.querySelector('[data-step="8"]').classList.add('active');
-        updateProgress();
-        scrollToTop();
-
         // Track conversion (Meta Pixel)
         trackEvent('form_submitted', formData);
         trackConversion();
 
         // Log to console (for development)
         console.log('Form submitted successfully:', formData);
+
+        // Success - redirect to thank you page with calendar
+        window.location.href = 'thankyou.html';
 
     } catch (error) {
         // Error handling
@@ -401,30 +397,25 @@ async function submitFormData(data) {
     // - Zapier webhook: https://hooks.zapier.com/hooks/catch/xxxxx/xxxxx/
     // - Make.com webhook
 
-    const FORM_ENDPOINT = 'YOUR_FORM_ENDPOINT_HERE'; // Replace with actual endpoint
+    // Zapier webhook endpoint
+    const ZAPIER_WEBHOOK = 'https://hooks.zapier.com/hooks/catch/6604274/uwjn5fz/';
 
-    // For development/testing, simulate a successful submission
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            // Uncomment below to use actual API endpoint
-            /*
-            return fetch(FORM_ENDPOINT, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data)
-            })
-            .then(response => {
-                if (!response.ok) throw new Error('Network response was not ok');
-                return response.json();
-            })
-            .then(result => resolve(result))
-            .catch(error => reject(error));
-            */
-
-            resolve({ success: true });
-        }, 1500);
+    // Submit to Zapier webhook
+    return fetch(ZAPIER_WEBHOOK, {
+        method: 'POST',
+        mode: 'no-cors', // Required for Zapier webhooks to avoid CORS issues
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+    .then(() => {
+        // no-cors mode doesn't return response, so we assume success
+        return { success: true };
+    })
+    .catch(error => {
+        console.error('Webhook submission error:', error);
+        throw error;
     });
 }
 

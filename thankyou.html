@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Free Consultation - Scalp Carolinas</title>
+    <meta name="description" content="Schedule your free SMP consultation with Scalp Carolinas">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Meta Pixel Code (Replace YOUR_PIXEL_ID_HERE with actual ID) -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'YOUR_PIXEL_ID_HERE');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID_HERE&ev=PageView&noscript=1"
+    /></noscript>
+
+    <style>
+        :root {
+            --primary-color: #ad322f;
+            --primary-dark: #8a2825;
+            --text-dark: #1a1a1a;
+            --bg-white: #ffffff;
+            --bg-light: #f5f5f5;
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Open Sans', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .header {
+            background-color: var(--primary-color);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .logo-text {
+            font-family: var(--font-heading);
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            color: var(--bg-white);
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .thank-you-message {
+            text-align: center;
+            margin-bottom: 40px;
+            background-color: var(--bg-white);
+            padding: 40px 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .thank-you-message h1 {
+            font-family: var(--font-heading);
+            color: var(--primary-color);
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .thank-you-message p {
+            font-size: 18px;
+            color: var(--text-dark);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .booking-section {
+            background-color: var(--bg-white);
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .booking-iframe-wrapper {
+            width: 100%;
+            min-height: 800px;
+        }
+
+        .booking-iframe-wrapper iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+
+        @media (max-width: 768px) {
+            .logo-text {
+                font-size: 20px;
+                letter-spacing: 2px;
+            }
+
+            .thank-you-message h1 {
+                font-size: 24px;
+            }
+
+            .thank-you-message p {
+                font-size: 16px;
+            }
+
+            .container {
+                padding: 20px 15px;
+            }
+
+            .thank-you-message {
+                padding: 30px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <h1 class="logo-text">SCALP CAROLINAS</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="thank-you-message">
+            <h1>Thank You for Your Submission!</h1>
+            <p>We've received your information and we're excited to help you on your SMP journey. Please schedule your free consultation below to get started.</p>
+        </div>
+
+        <div class="booking-section">
+            <div class="booking-iframe-wrapper">
+                <iframe
+                    src="https://app.acuityscheduling.com/schedule/23d9b6b8/?appointmentTypeIds[]=9979247"
+                    width="100%"
+                    height="800"
+                    frameBorder="0"
+                    id="bookingIframe"
+                    title="Schedule Your Free SMP Consultation">
+                </iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Track page view
+        if (typeof fbq !== 'undefined') {
+            fbq('track', 'ViewContent', {
+                content_name: 'Thank You - Booking Page',
+                content_category: 'Conversion'
+            });
+        }
+
+        // Adjust iframe height based on content
+        window.addEventListener('message', function(event) {
+            if (event.data && event.data.height) {
+                const iframe = document.getElementById('bookingIframe');
+                if (iframe) {
+                    iframe.style.height = event.data.height + 'px';
+                }
+            }
+        });
+    </script>
+</body>
+</html>
