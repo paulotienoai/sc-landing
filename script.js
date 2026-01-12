@@ -397,26 +397,34 @@ async function submitFormData(data) {
     // - Zapier webhook: https://hooks.zapier.com/hooks/catch/xxxxx/xxxxx/
     // - Make.com webhook
 
-    // Zapier webhook endpoint
+    // Webhook endpoints
     const ZAPIER_WEBHOOK = 'https://hooks.zapier.com/hooks/catch/6604274/uwjn5fz/';
+    const MAKE_WEBHOOK = 'https://hook.us1.make.com/ad55zgp1dbrt52smupscfvgadqncojve';
 
-    // Submit to Zapier webhook
-    return fetch(ZAPIER_WEBHOOK, {
+    // Submit to both webhooks in parallel
+    const zapierRequest = fetch(ZAPIER_WEBHOOK, {
         method: 'POST',
-        mode: 'no-cors', // Required for Zapier webhooks to avoid CORS issues
-        headers: {
-            'Content-Type': 'application/json',
-        },
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
-    })
-    .then(() => {
-        // no-cors mode doesn't return response, so we assume success
-        return { success: true };
-    })
-    .catch(error => {
-        console.error('Webhook submission error:', error);
-        throw error;
     });
+
+    const makeRequest = fetch(MAKE_WEBHOOK, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+    });
+
+    // Wait for both requests to complete
+    return Promise.all([zapierRequest, makeRequest])
+        .then(() => {
+            return { success: true };
+        })
+        .catch(error => {
+            console.error('Webhook submission error:', error);
+            throw error;
+        });
 }
 
 // ===== LEAD SCORING FUNCTION =====
