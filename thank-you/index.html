@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 
-    <!-- Meta Pixel Code (Replace 882568140041425 with actual ID) -->
+    <!-- Meta Pixel Code -->
     <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -23,6 +23,11 @@
     'https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', '882568140041425');
     fbq('track', 'PageView');
+    // Fire Lead event immediately on page load
+    fbq('track', 'Lead', {
+        content_name: 'SMP Qualification Form',
+        content_category: 'Lead Generation'
+    });
     </script>
     <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=882568140041425&ev=PageView&noscript=1"
@@ -167,14 +172,6 @@
     </div>
 
     <script>
-        // Track Lead conversion on thank you page load
-        if (typeof fbq !== 'undefined') {
-            fbq('track', 'Lead', {
-                content_name: 'SMP Qualification Form',
-                content_category: 'Lead Generation'
-            });
-        }
-
         // Adjust iframe height based on content
         window.addEventListener('message', function(event) {
             if (event.data && event.data.height) {

@@ -374,7 +374,7 @@ async function handleFormSubmit(e) {
         console.log('Form submitted successfully:', formData);
 
         // Success - redirect to thank you page with calendar
-        window.location.href = 'thankyou.html';
+        window.location.href = '/thank-you';
 
     } catch (error) {
         // Error handling
